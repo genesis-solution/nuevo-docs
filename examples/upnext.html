@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs - UpNext Plugin</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="../videojs/skins/treso/videojs.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>UpNext Plugin Example</h1>
+
+	
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+	<link href="../videojs/plugins/upnext.css" rel="stylesheet" type="text/css" />
+	<script src="../videojs/plugins/upnext.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload="auto" playsinline poster="images/people.jpg">
+				<source src="//opencdn.b-cdn.net/video/hls/people/playlist.m3u8" type="application/x-mpegURL">
+			</video>
+		</div>
+	</div>
+
+
+
+	<script>
+    var nextList = [
+		{
+		 sources: [{ src: '//opencdn.b-cdn.net/video/hls/people/playlist.m3u8', type: 'application/x-mpegURL'}],
+		 poster: 'images/people.jpg',
+		 title: 'Demo #1 video',
+		 duration: '01:13'
+		}, {
+		 sources: [{ src: '//opencdn.b-cdn.net/video/hls/ski/playlist.m3u8', type: 'application/x-mpegURL' }],
+		 poster: '//opencdn.b-cdn.net/video/hls/ski/ski.jpg',
+		 title: 'Demo #2 video',
+		 duration: '01:49'
+		}, {
+		 sources: [{ src: '//opencdn.b-cdn.net/video/hls/coffee/playlist.m3u8',type: 'application/x-mpegURL'}],
+		 poster: '//opencdn.b-cdn.net/video/hls/coffee/coffee.jpg',
+		 title: 'Demo #2 video',
+		 duration: '01:49'
+		}, {
+		 sources: [{src: '//opencdn.b-cdn.net/video/hls/nuevo/playlist.m3u8',type: 'application/x-mpegURL'}],
+		 poster: '//opencdn.b-cdn.net/video/hls/nuevo/nuevo.jpg',
+		 title: 'Demo #2 video',
+		 duration: '00:49'
+		}
+	];
+
+
+	var player = videojs('player_1');
+	player.nuevo({ contextMenu:false });
+	player.upnext( nextList );
+	</script>
+
+<div class="explain">
+Unique UpNext plugin by Nuevodevel.com is another addon that might be useful for many webmasters.<br />
+Full information about plugin usage and available options you can find on <a target="_blank" href="//www.nuevodevel.com/nuevo/showcase/upnext">.../nuevo/showcase/upnext</a>
+</div>
+
+<h2>Basic setup</h2>
+<pre>
+&lt;script src="../videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/nuevo.min.js"&gt;&lt;/script&gt;
+&lt;link href="../videojs/plugins/upnext.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script src="../videojs/plugins/upnext.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ contextMenu:false });
+	player.upnext( nextList );
+&lt;/script&gt;
+</pre>
+
+Check HTML source what is nextList javascript array. Find more information on plugin's dedicated demo on <a target="_blank" href="//www.nuevodevel.com/nuevo/showcase/upnext">Nuevodevel.com</a>
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevodevel Software</a>. All rights reserved.
+</div>
+
+</body>
+</html>

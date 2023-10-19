@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs - Overlay Banner Ad</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Overlay Banner Ad</h1>
+
+	
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+
+	<div class="play-parent" id="parent1">
+
+			<video id="player_1" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+			</video>
+			<div class="div-over">
+				<div class="overlay">
+					<a target="_blank" href="https://www.veojam.com"><img src="images/banner.jpg" alt="Best of Guitar"></a>
+					
+				</div>
+				<div class="over-close"></div>
+			</div>
+
+	</div>
+
+
+
+	<script>
+	var player1 = videojs('player_1');
+	player1.nuevo({ 
+			title: "Nuevo plugin for VideoJs Player", 
+	});
+	player1.ready(function(){
+		 var show_on_start =true;
+		 var parent = player1.el().parentNode;
+		 console.log(parent.id);
+		 var closeBtn = parent.querySelector('.over-close');
+		 var overlay = parent.querySelector('.div-over');
+		 
+		 closeBtn.addEventListener('click',function(e) {
+			overlay.style.display='none';
+			player1.play();
+		 }, false);
+
+ 		 this.on("pause", function(){
+			if (!this.seeking() && this.paused()) {
+				// Show overlay
+				overlay.style.display='block';
+			}
+		 });
+		 this.on('play', function(e) {
+			// Hide overlay
+			overlay.style.display='none';
+		 });
+		 if(show_on_start) {
+			this.pause(); overlay.style.display='block';
+		 } else {
+			overlay.style.display='none';
+		 }
+	});
+	</script>
+
+
+<div class="info">
+<br />Due to many requsts we prepared a tutorial how to display Banner Ad over player on PAUSE event. Example code also allows to display Banner Ad before video start as well.
+</div>
+
+<h2>Overlay Ad Tutorial</h2>
+<strong>I.</strong> First we need few elements and css styles taht your should enter into your website CSS stylesheet file.
+<pre>
+<span class="comment">/* Player parent DIV  */</span>
+.play-parent {
+	width:100%;  <span class="comment">/* width depends on your layout and needs  */</span>
+	position:relative;
+	overflow:hidden;
+}
+<span class="comment">/* Semi-transparent DIV element to cover entire player */</span>
+.div-over {
+	background:rgba(0,0,0,0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index:99;
+	display:none;
+	overflow:hidden;
+}
+<span class="comment">/* Centered DIV element for our banner ad */</span>
+.overlay {
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	display:inline-block;
+}
+<span class="comment">/* Close button */</span>
+.over-close {
+	width: 28px;
+	height: 28px;
+	position: absolute;
+	top:10px;
+	right:10px;
+	background:#fff;
+	cursor:pointer;
+	border-radius:50%;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+}
+.over-close:after {
+	content: '';
+	height: 16px;
+	border-left: 2px solid #222;
+	position: absolute;
+	transform: rotate(45deg);
+	left: 13px;
+	top:6px;
+}
+
+.over-close:before {
+	content: '';
+	height: 16px;
+	border-left: 2px solid #222;
+	position: absolute;
+	transform: rotate(-45deg);
+	left: 13px;
+	top:6px;
+}
+</pre>
+<br />
+<strong>II.</strong> Now you are ready to setup video element, player code and banner overlay on page. See Full example below
+
+
+<pre>
+<span class="comment">&lt;!--Head tag CSS--&gt;</span>
+&lt;link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" /&gt;
+
+<span class="comment">&lt;!--Load videojs and nuevo plugin--&gt;</span>
+&lt;script type="text/javascript" src="../videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="../videojs/nuevo.min.js"&gt;&lt;/script&gt;
+
+<span class="comment">&lt;!--Video tag setup--&gt;</span>
+&lt;div class="play-parent"&gt;
+	&lt;video id="player_1" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg"&gt;
+		&lt;source src="//devnuevo.com/media/video/demo_720.mp4" type="video/mp4"&gt;
+		&lt;source src="//devnuevo.com/media/video/demo_720.webm" type="video/webm"&gt;
+	&lt;/video&gt;
+	&lt;div class="div-over">&gt;
+		&lt;div class="overlay"&gt;
+		<span class="mark">Your Banner Ad Code Here.
+		This can be any HTML, including Ad code from any Advertising Network (javascript, iframe, etc)</span>
+		&lt;/div&gt;
+		&lt;div class="over-close"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+<span class="comment">&lt;!--Initialize the player and plugin--&gt;</span>
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ 
+		//option_1: option_value,
+		//option_2: option_value
+	}); 
+	player.ready(function(){
+		 var show_on_start = true;  <span class="comment">&lt;!--// Set true to show overlay banner before video start--&gt;</span>
+
+		 <span class="comment">&lt;!--// Find overlay elements--&gt;</span>
+		 var parent = player.el().parentNode;
+		 var closeBtn = parent.querySelector('.over-close');
+		 var overlay = parent.querySelector('.div-over');
+		 <span class="comment">&lt;!--// Close overlay and play media file on close button click--&gt;</span>
+		 closeBtn.addEventListener('click',function(e) {
+			overlay.style.display='none';
+			player.play();
+		 }, false);
+		 <span class="comment">&lt;!--// Show overlay on Pause event--&gt;</span>
+ 		 this.on("pause", function(){
+			if (!this.seeking() && this.paused()) {
+				overlay.style.display='block';
+			}
+		 });
+		 <span class="comment">&lt;!--// Hide overlay on Play event--&gt;</span>
+		 this.on('play', function(e) {
+			overlay.style.display='none';
+		 });
+		 if(show_on_start) {
+			player.pause(); overlay.style.display='block';
+		 } else {
+			overlay.style.display='none';
+		 }
+	});
+&lt;/script&gt;
+</pre>
+<br />
+<div class="info">
+Set <span class="mark">var show_on_start = false;</span> to skip overlay Banner Ad before video start
+</div>
+
+<br />
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>

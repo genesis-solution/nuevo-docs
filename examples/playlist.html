@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs Playlist example</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Videos Playlist through Videojs and Nuevo plugin  </h1>
+
+	<link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" />
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/poster.jpg"></video>
+		</div>
+	</div>
+
+
+
+	<div class="info"><br />
+	 
+	</div>
+
+	<script>
+	var player = videojs('player_1');
+	player.nuevo({ 
+		//option_1: value
+	});
+var myplaylist = [
+	{
+		sources: [{
+			src: '//opencdn.b-cdn.net/video/demo_720.mp4',
+			type: 'video/mp4'
+		  },{
+			src: '//opencdn.b-cdn.net/video/demo_480.mp4',
+			type: 'video/mp4', label:'480p',res: '480', default: 1
+		  },{
+			src: '//opencdn.b-cdn.net/video/demo_360.mp4',
+			type: 'video/mp4', label:'360p',res: '360'
+		  },{
+			src: '//opencdn.b-cdn.net/video/demo_240.mp4',
+			type: 'video/mp4', label:'240p',res: '240'
+		 }],
+		 thumb: 'images/thumbs/demo.jpg',
+		 slideImage: 'images/slides/demo_slide.jpg',
+		 title: 'Nuevodevel demo video',
+		 duration: '02:09'
+	}, {
+		  sources: [{
+			src: '//opencdn.b-cdn.net/video/bmv_720.mp4',
+			type: 'video/mp4', label:'720p',res: '720'
+		  },{
+			src: '//opencdn.b-cdn.net/video/bmv_360.mp4',
+			type: 'video/mp4', label:'360p',res: '360', default: 1
+		  },{
+			src: '//opencdn.b-cdn.net/video/bmv_240.mp4',
+			type: 'video/mp4', label:'240p',res: '240'
+		  }],
+		  thumb: 'images/thumbs/bmv.jpg',
+		  title: 'BMW M4 - "Ultimate Racetrack"',
+		  slideImage: 'images/slides/bmv_slide.jpg',
+		  duration: '01:09'
+    }, {
+		  sources: [{
+			src: '//opencdn.b-cdn.net/video/cymaticjazz_720.mp4',
+			type: 'video/mp4',res: '720',label: '720p'
+		  }, {
+			src: '//opencdn.b-cdn.net/video/cymaticjazz_480.mp4',
+			type: 'video/mp4',res: '480',label: '480p'
+		  }, {
+			src: '//opencdn.b-cdn.net/video/cymaticjazz_360.mp4',
+			type: 'video/mp4',res: '360',label: '360p', default: 1
+		  },{
+			src: '//opencdn.b-cdn.net/video/cymaticjazz_240.mp4',
+			type: 'video/mp4',res: '240',label: '240p'
+		  }],
+		  thumb: 'images/thumbs/cymaticjazz.jpg',
+		  slideImage: 'images/slides/cymaticjazz_slide.jpg',
+		  title: 'LG Cymatic Jazz',
+		  duration: '02:35'
+	}, {
+		  sources: [{
+			src: '//opencdn.b-cdn.net/video/big_buck_720.mp4',
+			type: 'video/mp4',res: '720',label: '720p'
+		  }, {
+			src: '//opencdn.b-cdn.net/video/big_buck_480.mp4',
+			type: 'video/mp4',res: '480',label: '480p'
+		  }, {
+			src: '//opencdn.b-cdn.net/video/big_buck_360.mp4',
+			type: 'video/mp4',res: '360',label: '360p', default: 1
+		  },{
+			src: '//opencdn.b-cdn.net/video/big_buck_240.mp4',
+			type: 'video/mp4',res: '240',label: '240p'
+		  }],
+		  thumb: 'images/thumbs/big_buck.jpg',
+		  slideImage: 'images/slides/big_buck_slide.jpg',
+		  title: 'Big Buck Bunny',
+		  duration: '02:17'
+	}
+];
+
+player.playlist(myplaylist);
+
+
+	</script>
+
+<div class="info">Original Playlist Plugin by <strong>Nuevodevel</strong> does not require to load any additional css or javascript files. All you need is to setup playlist javascript array of media items. 
+Playlist single item required parameters are: media file URL and thumb image URL. Other parameters that you may include are: media title, media duration and sprite image to show thumbs over progressbar.<br />
+Media files can be of different type supported by HTML5 and videojs. You should only provide media mime-type along media src attribute. For standard MP4/WEBM media files you can include multiple source files URLs to support resolution switcher. Check playlist example used in video above.
+</div>
+
+<h2>Playlist Array</h2>
+<pre>
+&lt;script&gt;
+var <span class="mark">myplaylist</span> = [
+	{
+		sources: [{
+			src: '//devnuevo.com/media/video/demo_720.mp4',
+			type: 'video/mp4'
+		  },{
+			src: '//devnuevo.com/media/video/demo_720_480.mp4',
+			type: 'video/mp4', label:'480p',res: '480', default: 1
+		  },{
+			src: '//devnuevo.com/media/video/demo_720_360.mp4',
+			type: 'video/mp4', label:'360p',res: '360'
+		  },{
+			src: '//devnuevo.com/media/video/demo_720_240.mp4',
+			type: 'video/mp4', label:'240p',res: '240'
+		 }],
+		 thumb: 'images/thumbs/demo.jpg',
+		 slideImage: 'images/slides/demo_slide.jpg',
+		 title: 'Nuevodevel demo video',
+		 duration: '02:09'
+	}, {
+		  sources: [{
+			src: '//devnuevo.com/media/video/bmv_720.mp4',
+			type: 'video/mp4', label:'720p',res: '720'
+		  },{
+			src: '//devnuevo.com/media/video/bmv_360.mp4',
+			type: 'video/mp4', label:'360p',res: '360', default: 1
+		  },{
+			src: '//devnuevo.com/media/video/bmv_240.mp4',
+			type: 'video/mp4', label:'240p',res: '240'
+		  }],
+		  thumb: 'images/thumbs/bmv.jpg',
+		  slideImage: 'images/slides/bmv_slide.jpg',
+		  title: 'BMW M4 - "Ultimate Racetrack"',
+		  duration: '01:09'
+    }, {
+		  sources: [{
+			src: '//devnuevo.com/media/video/cymaticjazz_720.mp4',
+			type: 'video/mp4',res: '720',label: '720p'
+		  }, {
+			src: '//devnuevo.com/media/video/cymaticjazz_480.mp4',
+			type: 'video/mp4',res: '480',label: '480p'
+		  }, {
+			src: '//devnuevo.com/media/video/cymaticjazz_360.mp4',
+			type: 'video/mp4',res: '360',label: '360p', default: 1
+		  },{
+			src: '//devnuevo.com/media/video/cymaticjazz_240.mp4',
+			type: 'video/mp4',res: '240',label: '240p'
+		  }],
+		  thumb: 'images/thumbs/cymaticjazz.jpg',
+		  slideImage: 'images/slides/cymanticjazz_slide.jpg',
+		  title: 'LG Cymatic Jazz',
+		  duration: '02:35'
+	}, {
+		  sources: [{
+			src: '//devnuevo.com/media/video/big_buck_720.mp4',
+			type: 'video/mp4',res: '720',label: '720p'
+		  }, {
+			src: '//devnuevo.com/media/video/big_buck_480.mp4',
+			type: 'video/mp4',res: '480',label: '480p'
+		  }, {
+			src: '//devnuevo.com/media/video/big_buck_360.mp4',
+			type: 'video/mp4',res: '360',label: '360p', default: 1
+		  },{
+			src: '//devnuevo.com/media/video/big_buck_240.mp4',
+			type: 'video/mp4',res: '240',label: '240p'
+		  }],
+		  thumb: 'images/thumbs/big_buck.jpg',
+		  slideImage: 'images/slides/big_buck_slide.jpg',
+		  title: 'Big Buck Bunny',
+		  duration: '02:17'
+	}
+];
+&lt/script&gt;
+</pre>
+<br />
+<div class="info">
+You can insert playlist array directly on your website or load it from external javascript file. Once playlist ready you are fine to setup video element, initialize player, Nuevo plugin and playlist.
+</div>
+<h2>Code Source</h2>
+<pre>
+<span class="comment">&lt;!--Setup video element--&gt;</span>
+&lt;video id="<span class="mark">player_1</span>" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/poster.jpg"&gt;&lt;/video&gt;
+
+<span class="comment">&lt;!--Initialize player with nuevo plugin and your playlist--&gt;</span>
+&lt;script&gt;
+	var player = videojs('<span class="mark">player_1</span>');
+	player.nuevo({ 
+		//option_1: value
+	});
+	player.playlist(<span class="mark">myplaylist</span>);
+&lt;/script&gt;
+</pre>
+<br />
+Nuevo plugin includes several options for playlist and playlist UI. See Nuevo plugin setup and options description.
+<pre>
+	player.nuevo ({ 
+		playlistUI: true,  <span class="comment">// set <i>false</i> to hide playlist UI completely</span>
+		playlistShow: true, <span class="comment">// Set <i>false</i> to hide playlistUI when video player ready to show</span>
+		playlistAutoHide: true <span class="comment">// Set <i>false</i> to keep playlist UI visible when video starts playing</span>
+		playlistNavigation: false <span class="comment">// Set <i>true</i> to show playlist Next and Previous arrows</span>
+		playlistRepeat: false <span class="comment">// Set <i>true</i> to play first media file when last media file ended</span>
+	});
+</pre>
+<br />
+<div class="info">
+You can test playlist options on <a target="_blank" href="https://www.nuevodevel.com/nuevo/playlist">Nuevodevel playlist demo website</a>
+<br /><br />
+Nuevo playlist features multiple public functions to manage playlist, insert or delete media items programmatically. All functions are described on <a target="_blank" href="https://www.nuevodevel.com/nuevo/playlistsdk">Nuevodevel playlist SDK demo page.</a>
+
+</div>
+
+
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>

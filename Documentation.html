@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Nuevo plugin and Skins for Video.js</title>
+<style type="text/css">
+<!--
+h1 {
+	font-family: "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+	font-size: 29px;
+	color: #4488FF;
+	letter-spacing: -2px;
+	font-weight: normal;
+}
+i {
+	color: #4488FF;
+}
+a {
+	color: #990000;
+}
+h2 {
+	font-family: "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+	font-size: 23px;
+	color: #999999;
+	letter-spacing: -1px;
+	font-weight: normal;
+}
+body {
+	font-family: "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #444;
+}
+p {
+	line-height:18px;
+}
+pre {
+display: block;
+width: 100%;
+border: 1px dashed #bbb;
+padding: 8px;
+margin-top: 10px;
+font: normal 12px "Courier New", Courier, monospace;
+color:#CC3366;
+background-color:#fcfcfc;
+-moz-tab-size: 2;
+-o-tab-size: 2;
+tab-size: 2;
+white-space: pre-wrap;                 /* CSS3 browsers  */
+white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
+white-space: -pre-wrap;                /* Opera 4 thru 6 */
+white-space: -o-pre-wrap;              /* Opera 7 and up */
+word-wrap: break-word;                 /* IE 5.5+ and up */
+/* overflow-x: auto; */                /* Firefox 2 only */
+}
+
+-->
+</style>
+</head>
+
+<body>
+<h1>Nuevo plugin and Skins for Video.js player version 7.x</h1>
+
+<h2>Version</h2>
+<blockquote>
+Nuevo plugin javascript file is located in <i>"/videojs"</i> directory and it is the latest version 10.3.0, released 2023.01.24<br />
+Video.js core file located in same directory is version 7.21.1, released 2022.11.21
+</blockquote>
+
+<h2>I. Basic setup</h2>
+Here's basic setup of Video.js player with Nuevo plugin and skin.<br />
+<br />
+
+
+<input type="checkbox" name="checkbox1" id="checkbox1" />
+1. Add an HTML5 video tag and setup video sources inside the &lt;body&gt; element of your website page.
+<blockquote>
+Use standard HTML5 video tag to embed a video. You must use unique 'id' attribute, different for each next player instance on same web page. Include/exclude attributes, settings, sources, and tracks.
+<pre>
+&lt;video id="player_1" class="video-js" controls preload="auto" width="640" height="360" poster="//domain.com/path-to-poster.jpg" playsinline&gt;
+ &lt;source src="//domain.com/path-to/video.mp4" type="video/mp4" /&gt;
+ &lt;source src="//domain.com/path-to/video.webm" type="video/webm" /&gt;
+&lt;/video&gt;
+</pre>
+</blockquote>
+
+<input type="checkbox" name="checkbox2" id="checkbox2" />
+2. Load player skin css file, video.js player and nuevo.min.js plugin javascript files inside the &lt;body&gt; element of your website page.
+<blockquote>
+<pre>
+&lt;link href="//domain.com/path-to/videojs/skins/skin-name/videojs.min.css" rel="stylesheet"&gt;
+&lt;script src="//domain.com/path-to/videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script src="//domain.com/path-to/videojs/nuevo.min.js"&gt;&lt;/script&gt;
+</pre>
+</blockquote>
+
+<input type="checkbox" name="checkbox3" id="checkbox3" />
+3. Load and initialize Videojs with Nuevo plugin.
+<blockquote>
+Finally you must initialize player with "nuevo" plugin for each instance of player:
+<pre>
+&lt;script&gt;
+var player = videojs('player_1'); 
+player.nuevo({
+		option1: option1 value,
+		option2: option2 value
+});
+&lt;/script&gt;
+</pre>
+Vidojs setup must refer to html "video" element unique id.
+</blockquote>
+
+
+<br />
+<blockquote>
+If you plan to use multiple versions of same video but different resolution, &lt;video&gt; setup code may look like:
+
+<pre>
+&lt;video id="player_1" class="video-js" controls preload="auto" width="640" height="360" poster="//domain.com/path-to/poster.jpg" playsinline&gt;
+ &lt;source src="//domain.com/path-to/video240p.mp4" type="video/mp4" res="240" label="240p" /&gt;
+ &lt;source src="//domain.com/path-to/video480p.mp4" type="video/mp4" res="480" label="480p" default /&gt;
+ &lt;source src="//domain.com/path-to/video720p.mp4" type="video/mp4" res="720" label="720p" /&gt;
+&lt;/video&gt;
+</pre>
+Example above will play video with option to switch between 3 different resolution video files. Set <i>default</i> flag to decide which video resolution to play by default.
+<br /><br /><br />
+Video HTML tag in code example above use static width and height defined in pxels for player size.<br />
+You can also use one of videojs predefined classes for specific player aspect ratio or player size.
+<br /><br />
+<strong>vjs-fluid</strong> class will fit 100% width of parent container and will keep player height according to video aspect ratio.
+<pre>&lt;video id="player_1" class="video-js vjs-fluid" controls preload="auto" width="100%"  poster="//domain.com/path-to/poster.jpg"&gt;</pre>
+
+<br />
+<strong>vjs-16-9</strong> class will fit 100% width of parent container and will keep 16:9 aspect ratio for player size.
+<pre>&lt;video id="player_1" class="video-js vjs-16-9" controls preload="auto" width="100%" poster="//domain.com/path-to/poster.jpg"&gt;</pre>
+
+<br />
+<strong>vjs-4-3</strong> class will fit 100% width of parent container and will keep 4:3 aspect ratio for player size.
+<pre>&lt;video id="player_1" class="video-js vjs-4-3" controls preload="auto" width="100%" poster="//domain.com/path-to/poster.jpg"&gt;</pre>
+
+<br />
+<strong>vjs-fill</strong> class will make the player fit and fill out its container.
+<pre>&lt;video id="player_1" class="video-js vjs-fill" controls preload="auto" poster="//domain.com/path-to/poster.jpg"&gt;</pre>
+
+
+
+<br />
+
+
+<br />
+You may decide about "preload" attribute for video tag. You can find great article about HTML5 "preload" at <a href="https://www.stevesouders.com/blog/2013/04/12/html5-video-preload/" target="_blank">stevesouders blog</a>
+</blockquote>
+<br />
+
+
+
+
+<blockquote>
+Once you upload files to your server, in "/examples/" directory you will find a bunch of HTML examples covering most popular usage of videojs player and nuevo plugin.
+<br /><br />
+
+The list of available Nuevo plugin options is available on <a href="http://www.nuevodevel.com/nuevo/doc/">documentation page</a> of Nuevodevel.com website.
+<br />
+You may also review <a href="http://www.nuevodevel.com/nuevo/showcase/">Demos</a> on Nuevodevel.com website to check specific options usage online.
+
+
+</blockquote>
+<p><br /><br />
+  Website: <a href="https://www.nuevodevel.com/nuevo">http://www.nuevodevel.com/videojs</a><br />
+  Support: <a href="mailto:team.nuevodevel@gmail.com">team.nuevodevel@gmail.com</a>
+</p>
+<br /><br />
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs/Nuevo - Playback Resume</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Playback Resume</h1>
+	<div style="text-align:center;">
+	Play part of video then refresh page in your browser.<br />
+	Video playback will be resumed from time position it was left last time.
+	</div>
+	<link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" />
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_one" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+			</video>
+		</div>
+	</div>
+
+
+	<script>
+	var player = videojs('player_one');
+	player.nuevo({ 
+		video_id: 'x-11',
+		resume: true 
+	});
+	</script>
+
+<h2>Code Setup</h2>
+<pre>
+<span class="comment">&lt;!--Initialize player and plugin--&gt;</span>
+&lt;script&gt;
+	var player = videojs('player_1',{},function(){ 
+	player.nuevo({ 
+		<span class="mark">video_id: 'unique Id',</span>
+		<span class="mark">resume: true</span> 
+	});
+&lt;/script&gt;
+</pre>
+<br />
+Nuevo plugin includes option to resume playback of a video at the point in time it was left.<br />
+You need to enable (true) <i><span class="mark">resume</span></i> option and set some unique <span class="mark">video_id</span> identifier.<br />
+Resuming video is not possible when one of video ads system is in use.<br /><br />
+Video_id identifier canbe set in multiple ways. Chcek <a class="under" target=_blank" href="https://www.nuevodevel.com/nuevo/showcase/videoid">this demo</a> for details.
+
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs Title Info Overlay</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Title Info Overlay</h1>
+
+
+	<script type="text/javascript" src="../videojs/video.min.js"></script>
+	<script type="text/javascript" src="../videojs/nuevo.min.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_one" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+			</video>
+		</div>
+	</div>
+
+
+	<script>
+	var player = videojs('player_one');
+	player.nuevo({ 
+		videoInfo: true,
+		infoUrl: "https://www.nuevodevel.com/nuevo/showcase/videoinfo",
+		infoText: "This is video info example text",
+		infoDescription: "This is video info example text",
+		infoIcon: "images/logo_small.png"
+	});
+	</script>
+<br />
+<div class="info">Video title/description overaly appears when you mouse over player or pause it, just like controlbar.</div>
+
+<h2>Player Nuevo Initialization Code Example</h2>
+<pre>
+<span class="comment">&lt;!--Initialize player and plugin--&gt;</span>
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ 
+		<span class="mark">videoInfo: true,</span>
+		<span class="mark">infoIcon: "images/logo_small.png",</span>  // optional
+		<span class="mark">infoUrl: "https://www.nuevodevel.com/nuevo/showcase/videoinfo",</span>  // optional
+		<span class="mark">infoTitle: "This is video title text"</span>
+		<span class="mark">infoDescription: "This is video description example text"</span>
+	});
+&lt;/script&gt;
+</pre>
+<br />
+Other possible options for video info are:
+<blockquote>
+<strong><i>infoFont</i></strong> - Text font family for text. Must be system font or font loaded through css.<br />
+<strong><i>infoSize</i></strong> - Text font size (pixels) from range 15-24 (default is 18).<br />
+<strong><i>infoBold</i></strong> - set <i>true</i> to show tinfor text bolden.<br />
+<br /><br />
+
+ If infoTitle not defined, the player will examine title Nuevo plugin option. If both not defined, video info will not show.<br />
+ infoURL to go on info click is optional. If not defined, the link is not active.
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>

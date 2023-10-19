@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs/Nuevo - Rewind button</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Rewind Button</h1>
+
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+			</video>
+		</div>
+	</div>
+
+
+	<script>
+	var player = videojs('player_1');
+	player.nuevo({ 
+		title: "Nuevo plugin for VideoJs Player",
+		buttonForward:true
+	}); 
+	</script>
+
+<br />
+Nuevo plugin features "Rewind" and "Forward" buttons to rewind or forward video 10 sconds in time.<br />
+By default only forward button is enabled and displayed. To show/hide rewind and forward button you can use simple Nuevo plugin options.<br />Check Nuevo plugin options code below.
+
+<pre>
+&lt;script&gt;
+<span class="comment">&lt;!--Initialize player + nuevo and hotkeys plugins--&gt;</span>
+	var player = videojs('player_1');
+	player.nuevo({ 
+		title: "Nuevo plugin for VideoJs Player",
+		<span class="mark">buttonForward: true</span>
+	}); 
+&lt;/script&gt;
+</pre>
+<br />
+Rewind button is enabled by default, to disable it set appropriate option to false.
+<pre>
+&lt;script&gt;
+	player.nuevo({ 
+		<span class="mark">buttonRewind: false</span>
+	});
+&lt;/script&gt;
+</pre>
+<br />
+Rewind and Forward time value is 10 seconds by default. It is possible to define other than "10" time value. In example below Rewind/Forward time value is set to 20 seconds.
+
+<pre>
+&lt;script&gt;
+<span class="comment">&lt;!--Initialize player + nuevo and hotkeys plugins--&gt;</span>
+	var player = videojs('player_1');
+	player.nuevo({ 
+		<span class="mark">buttonForward: true,</span>
+		<span class="mark">rewindforward:20</span>
+	}); 
+&lt;/script&gt;
+</pre>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_2" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+			</video>
+		</div>
+	</div>
+
+	<script>
+	var player2 = videojs('player_2');
+	player2.nuevo({ 
+		title: "Nuevo plugin for VideoJs Player",
+		buttonForward:true,
+		rewindforward:20
+	}); 
+	</script>
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>

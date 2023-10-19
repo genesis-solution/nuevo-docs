@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs/Nuevo - VTT base preview thumbnails</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>VTT Preview Thumbnails</h1>
+	<link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" />
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+	<script src="../videojs/plugins/videojs.thumbnails.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/poster.jpg" crossorigin="anonymous">
+				<source src="https://opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="https://opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+				<track kind="metadata" src="images/slides/demo.vtt" />
+			</video>
+		</div>
+	</div>
+
+
+
+	<div class="info"><br />
+	 Mouse over progressbar to see the time thumbnails once video started to play.
+	</div>
+
+	<script>
+	var player = videojs('player_1');
+	player.nuevo();
+	player.thumbnails();
+	</script>
+
+<h2>Tutorial</h2>
+<div class="info">To use VTT based thumnails plugin you must load it first, right after video.js script, for example:</div>
+
+
+<pre>
+&lt;link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script src="//www.domain.com/videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script src="//www.domain.com/videojs/plugins/videojs.thumbnails.min.js"&gt;&lt;/script&gt;
+&lt;script src="//www.domain.com/videojs/nuevo.js"&gt;&lt;/script&gt;
+</pre>
+
+<div class="info">The thumbnails details need to be added via VTT file as a metadata video track element, for example:</div>
+<pre>
+&lt;video id="player_1" class="video-js" controls width="640" height="360" playsinline poster="//path-to-poster.jpg" crossorigin="anonymous"&gt;
+	&lt;source src="//path-to-media file" type="video/mp4" /&gt;
+	&lt;track kind="metadata" src="//path-to-thumnails-vtt-file" /&gt;
+&lt;/video&gt;
+</pre>
+
+<div class="info">Finally you must initialize thumbnails plugin along with videojs and nuevo plugin</div>
+<pre>
+&lt;script&gt;
+var player = videojs("player_1");
+player.nuevo({ option1: "value1", option2: "value2" })
+player.thumbnails();
+&lt;/script&gt;
+</pre>
+It is possible to load thumbnails VTT file manually through javascript on player ready event instead of using video &lt;track&gt; element, e.g.
+<pre>
+player.on('ready',function(){
+	var track=({kind:'metadata',src:"//path-to-thumnails-vtt-file"});
+	player.loadTracks(track);
+});
+</pre>
+
+
+<br />
+Same like for built-in thumbnails you can display shadow thumb over player window when you hold your mouse pressed over progressbar.
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_2" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/poster.jpg" crossorigin="anonymous">
+				<source src="https://opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="https://opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+				<track kind="metadata" src="images/slides/demo.vtt" />
+			</video>
+		</div>
+	</div>
+	<script>
+	var player2 = videojs('player_2');
+	player2.nuevo({ghostThumb:true});
+	player2.thumbnails();
+	</script>
+<pre>
+&lt;script&gt;
+var player2 = videojs("player_2");
+player2.nuevo({ ghostThumb:true })
+player2.thumbnails();
+&lt;/script&gt;
+</pre>
+Please note that ghostThumb options will work only with thumbnails tilled on single sprite image.
+<br /><br />
+To learn what are thumbnails images or thumbnails single sprite image, and to learn what VTT file structure should be, please visit <a href="https://www.nuevodevel.com/nuevo/showcase/thumbnailsvtt">VTT Thumbnails</a> dedicated resource. If you login on Nuevodevel website you will also gain access to download bash sprite/vtt generator free script.
+
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>

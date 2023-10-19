@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Graphical filters plugin</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="../videojs/skins/treso/videojs.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Graphical Filters Plugin</h1>
+
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js?v=1112"></script>
+	<script src="../videojs/plugins/videojs.filters.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload="auto" crossorigin="anonymous" playsinline poster="images/people.jpg">
+				<source src="//opencdn.b-cdn.net/video/hls/people/playlist.m3u8" type="application/x-mpegURL">
+			</video>
+		</div>
+	</div>
+
+
+
+	<script>
+	var player = videojs('player_1');
+	player.nuevo();
+	player.filters();
+	</script>
+
+<div class="explain">
+Filters plugin allows to adjust video brightness, saturation and contrast.
+</div>
+
+<h2>Initialize player and plugins</h2>
+<pre>
+<!--Initialize player and plugins-->
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ 
+		option1: value,
+		option2: value
+	});
+	player.filters(); 
+&lt;/script&gt;
+</pre>
+
+You can access graphical filters dialog from settings menu. Additional on touch devices sparate brightness slider is available on left side of the player, just like you can see on Netflix player.<br /><br />
+If you prefer to hide separate brightness slider, disable touchBrightness plugin's option.
+<pre>
+player.filters( touchBrightness:false ); 
+</pre>
+If you prefer to hide filters item in settings menu, but keep brightness slider on touch devices:
+<pre>
+player.filters({ filtersMenu:false });
+</pre>
+
+
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevodevel Software</a>. All rights reserved.
+</div>
+
+</body>
+</html>
