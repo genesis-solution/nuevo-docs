@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs/Nuevo - Resolution switcher</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Video quality switcher</h1>
+	<link href="../videojs/skins/treso/videojs.css" rel="stylesheet" type="text/css" />
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/people.jpg">
+				<source src="//opencdn.b-cdn.net/video/people_240.mp4" res="240" label="240p" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/people_360.mp4" res="360" default label="360p" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/people_720.mp4" res="720" label="720p" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/people_1080.mp4" res="1080" label="1080p" type="video/mp4">
+			</video>
+		</div>
+	</div>
+
+
+
+	<script>
+	var player = videojs('player_1');
+	player.nuevo({ 
+		//option1: value,
+		//option2: value,
+		//option3: value
+	});
+	</script>
+
+<h2>Code Setup</h2>
+<pre>
+
+<span class="comment">&lt;!--Load player and Nuevo plugin with skin --&gt;</span>
+&lt;link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script src="../videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/skins/nuevo/nuevo.min.js"&gt;&lt;/script&gt;
+
+<span class="comment">&lt;!--Multiple reslolution video on page setup--&gt;</span>
+&lt;video id="player_1" class="video-js vjs-fluid" controls preload playsinline poster="images/people.jpg"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/people_240.mp4" res="240" label="240p" type="video/mp4"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/people_360.mp4" res="360" default label="360p" type="video/mp4"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/people_720.mp4" res="720" label="720p" type="video/mp4"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/people_480.mp4" res="1080" label="1080p" type="video/mp4"&gt;
+&lt;/video&gt;
+
+<span class="comment">&lt;!--Initialize player and plugin--&gt;</span>
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ 
+		//option1: value,
+		//option2: value
+	});
+&lt;/script&gt;
+</pre>
+
+<br />
+<h2>SD/HD Quality Switcher</h2>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_2" class="video-js vjs-fluid" controls preload playsinline poster="images/people.jpg">
+				<source src="//opencdn.b-cdn.net/video/people_1080.mp4" res="HD" label="HD" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/people_360.mp4" res="SD" label="SD" type="video/mp4" default>
+			</video>
+		</div>
+	</div>
+
+	<script>
+	var player2 = videojs('player_2',
+	{
+		sources:([ 
+		{
+			src:"//opencdn.b-cdn.net/video/people_240.mp4",res:"240",label:"SD",type:"video/mp4"
+		}, {
+			src:"//opencdn.b-cdn.net/video/people_720.mp4",res:"720",label:"HD",type:"video/mp4"
+		}
+		]),
+		poster:"images/people.jpg"
+
+	});
+	player2.nuevo({ 
+		//option1: value,
+		//option2: value
+	});
+	</script>
+
+<br />
+<h2>Code Setup</h2>
+<pre>
+<span class="comment">&lt;!--HD/SD quality video on page setup--&gt;</span>
+&lt;video id="player_1" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/demo_360.mp4" res="SD" label="SD" default type="video/mp4"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/demo_720.mp4" res="HD" label="HD" type="video/mp4"&gt;
+&lt;/video&gt;
+</pre>
+<br />
+
+<h2>Showing Qualities menu as Settings submenu</h2>
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_3" class="video-js vjs-fluid" controls preload playsinline poster="images/people.jpg">
+				<source src="//opencdn.b-cdn.net/video/people_240.mp4" res="240" label="240p" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/people_360.mp4" res="360" default label="360p" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/people_720.mp4" res="720" label="720p" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/people_1080.mp4" res="1080" label="1080p" type="video/mp4">
+			</video>
+		</div>
+	</div>
+
+	<script>
+	var player3 = videojs('player_3');
+	player3.nuevo({ 
+	    qualityMenu:true,
+		//option1: value,
+		//option2: value
+	});
+	</script>
+
+<br />
+By default qualities menu is displayed separately in control bar. You can also order to display it as setting submenu by setting nuevo plugin option <span class="mark">qualityMenu: true</span>.
+<br />
+<h2>Code Setup</h2>
+<pre>
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ 
+	    qualityMenu: true,
+	});
+&lt;/script&gt;
+</pre>
+<br />
+The HD or 4K icon appears for videos of minimum 1080p resolution. This is what Youtube apply as well.<br />
+HD icon for resolution > 720 hase been depreciated, however the user may still decide about minimum resolution to show HD icon.
+<pre>
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ 
+	    minhd: 720
+	});
+&lt;/script&gt;
+</pre>
+
+	<div style="text-align:center;fonr-size:1.1em;">
+For HLS and MPEG-DASH streams quality switcher appears automatically if only multiple variants of media defined in playlist file.<br />
+iOS is missing Media Source Extension, use only native HLS streaming and does not allow to read, populate and switch quality manually. iOS does not support MPEG/DASH type of streaming at all.
+	
+	</div>
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs/Snapshot Image</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="../videojs/skins/treso/videojs.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Capture Snapshot Image</h1>
+
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload="auto" crossorigin="anonymous" playsinline poster="images/people.jpg">
+				<source src="//opencdn.b-cdn.net/video/hls/people/playlist.m3u8" type="application/x-mpegURL">
+			</video>
+		</div>
+	</div>
+
+
+
+	<script>
+	var player = videojs('player_1');
+	player.nuevo({ 
+		snapshot:true,
+	});
+	</script>
+
+<div class="explain">
+Optional "snapshot" button, which allows to capture image from video at current time position.
+</div>
+
+<h2>Initialize snapshot button</h2>
+<pre>
+<span class="comment">Initialize video.js and Nuevo plugin with Snapshot enabled</span>
+<!--Initialize player and plugin-->
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ 
+		snapshot:true
+	});
+&lt;/script&gt;
+</pre>
+
+By default captured image is in <i>.jpg</i> format. You can also set an option to save image in <i>.png</i> format.
+
+<pre>
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ 
+		snapshot:true, snapshotType: "png"
+	});
+&lt;/script&gt;
+</pre>
+
+The plugin allows to overlay watermark on snapshot image. You need to define watermark text as plugin's option, e.g.
+<pre>
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ 
+		snapshot:true, 
+		snapshotWatermark: "Domain.com" 
+	});
+&lt;/script&gt;
+</pre>
+
+If streaming server is other than origin than production server, you need to enable CORS on streaming server or at least set video attribute crossorigin="anonymous".
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevodevel Software</a>. All rights reserved.
+</div>
+
+</body>
+</html>

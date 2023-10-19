@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs VR/360 Nuevodevel plugin</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>VR/360&deg; Plugin by Nuevodevel</h1>
+	<ul style="margin:0;font-size:14px;">
+<li>Use your mouse or a fingers on touchscreen to move around 360 degrees. Use mousewheel or fingers to zoom VR view.</li>
+<li>Use Cardboard button on touchscreen to enter Carboard VR fullscreen mode.</li>
+<li>Use navigation control or keyboard (arrows and Home keys) to control wD Perspective.</li>
+</ul>
+	<link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css">
+	<link href="../videojs/plugins/videojs.vr.css" rel="stylesheet" type="text/css">
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+	<script src="../videojs/plugins/videojs.vr.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload playsinline poster="video/vr.jpg">
+				<source src="video/vr.mp4" type="video/mp4">
+
+			</video>
+		</div>
+	</div>
+
+
+
+	<script>
+	var player = videojs('player_1');
+	player.nuevo({ 
+			title: "Nuevo plugin for VideoJs Player", 
+			zoomMenu:false 
+	});
+	player.vr();
+	</script>
+
+
+<h2>Basic Code Setup</h2>
+<pre>
+<span class="comment">&lt;!--Load CSS in the HEAD of your website--&gt;</span>
+&lt;link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" /&gt;
+&lt;link href="../videojs/plugins/videojs.vr.css" rel="stylesheet" type="text/css" /&gt;
+
+<span class="comment">&lt;!--Load player and VR css, videojs and Nuevo + VR plugin --&gt;</span>
+
+&lt;link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css"&gt;
+&lt;link href="../videojs/plugins/videojs.vr.css" rel="stylesheet" type="text/css"&gt;
+
+&lt;script src="../videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/nuevo.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/plugins/videojs.vr.js"&gt&lt;/script&gt
+
+<span class="comment">&lt;!--Video tag setup--&gt;</span>
+&lt;video id="<span class="mark">player_one</span>" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg"&gt;
+	&lt;source src="video/vr.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+<span class="comment">&lt;!--Initialize the player and plugins--&gt;</span>
+&lt;script&gt;
+	var player = videojs('<span class="mark">player_1</span>)';
+	player.nuevo({ 
+		zoomMenu:false,
+		//option_name: option_value
+	});
+	<span class="mark">player.vr();</span>
+&lt;/script&gt;
+</pre>
+<br />
+
+VR/360 Plugin supports projection types: 180, 360, Sphere, equirectangular, Cube, 360 CUBE, 360_LR, 360_TB, EAC, EAC_LR<br />
+<ul>
+<li>'180' - The video is half sphere and the user should not be able to look behind themselves</li>
+<li>'360', 'Sphere', or 'equirectangular'  - The video is sphere</li>
+<li>'Cube' or '360_CUBE' -  The video is cube.</li>
+<li>'360_LR' - Used for side-by-side 360 videos</li>
+<li>'360_TB' - Used for top-to-bottom 360 videos</li>
+<li>'EAC' - Used for Youtube Equi-Angular Cubemap videos </li>
+<li>'EAC_LR' - Used for Youtube side-by-side Equi-Angular Cubemap videos</li>
+</ul>
+
+Default projection type is 360. To set other than default projection type see example code below:
+<pre>
+&lt;script&gt;
+	var player = videojs('<span class="mark">player_1</span>)';
+	player.nuevo({ 
+		//option_name: option_value
+	});
+	<span class="mark">player.vr({projection: 'Cube'});</span>
+&lt;/script&gt;
+</pre>
+There are few other settings options available for VR/360 plugin.
+<ul style="font-size:14px;margin:0">
+<li><i>nav</i> - Set false if you do not want manual VR navigation. Default value is "true"</li>
+<li><i>nav_position</i> - Shows manual navigation in "right" or "left" top corner. Default value is "right".</li>
+<li><i>minZoom</i> - Minimum zoom value when mousewheel over video. Default value is 50.</li>
+<li><i>maxZoom</i> - Maximum zoom value when mousewheel over video. Default value is 105.</li>
+<li><i>keys</i> - Enables arrow keyboard hotkeys to move around scene. To disable hotkey set this option to "false".</li>
+<li><i>omnitone</i> - Disabled by default. Enable (omnitone:true) if spatial sound available.</li>
+<li><i>motionControls</i> - Enabled by Default. Set to false to top motion/gyro on mobile device.</li>
+</ul>
+<pre>
+player.vr({
+	nav: false,
+	keys: false,
+	omnitone:true,
+	motionControls: false
+});
+</pre>
+<br />
+You can load Omnitone javascript ambisonic decoder by Google (included in plugins directory) and enable omnitone option to support spatial sound in VR/360 video, e.g.
+<pre>
+&lt;script src="../videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/nuevo.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/plugins/omnitone.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/plugins/videojs.vr.js"&gt&lt;/script&gt
+&lt;script&gt;
+var player = videojs('player_1)';
+player.nuevo({ 
+		//option_name: option_value
+});
+player.vr({
+	projection: "EAC",
+	omnitone: true
+});
+&lt;/script&gt;
+</pre>
+
+<div class="info">
+To stream video from other than production server you must enable CORS on streaming server. <a target="_blank" href="https://enable-cors.org/">https://enable-cors.org/</a><br />
+Check <a href="https://www.nuevodevel.com/plugins/vr360">www.nuevodevel.com/plugins/vr360</a> to learn about player and browsers compatibility, VR/360 limitations, possible issues and suggestions.
+</div>
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>

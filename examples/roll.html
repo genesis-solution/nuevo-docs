@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs/Nuevo - Preroll, Midroll, Postroll</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Midroll Video Ads</h1>
+
+	<link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" />
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" res="720" label="720p" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.webm" res="720" label="720p" type="video/webm">
+			</video>
+		</div>
+	</div>
+
+    
+	<script>
+	var player = videojs('player_1');
+	player.nuevo(); 	
+	player.vroll([
+		{src:"//opencdn.b-cdn.net/video/preroll.mp4",type:"video/mp4",href:"//www.nuevodevel.com/nuevo/order",offset:"0",skip:"5",id:"1"},	{src:"//opencdn.b-cdn.net/video/midroll1.mp4",type:"video/mp4",href:"//www.nuevodevel.com/nuevo/order",offset:"10",skip:"5",id:"2"},
+		{src:"//opencdn.b-cdn.net/video/midroll2.mp4",type:"video/mp4",href:"//www.nuevodevel.com/nuevo/order",offset:"50%",skip:"5",id:"3"},
+		{src:"//opencdn.b-cdn.net/video/postroll.mp4",type:"video/mp4",href:"//www.nuevodevel.com/nuevo/order",offset:"100%",skip:"5",id:"4"}]);
+	</script>
+
+<h2>Player Code setup</h2>
+<h3>Prerroll, Midroll (00:10), Midroll (50%), Postroll</h3>
+
+
+<pre>
+<span class="comment">&lt;!--Initialize player, Nuevo plugin and setup roll videos--&gt;</span>
+&lt;script&gt;
+	var player = videojs('player_one');
+	player.nuevo(); 
+	player.vroll([
+		{
+			src: "//opencdn.b-cdn.net/video/preroll.mp4",
+			type: "video/mp4",
+			href: "https://url-to-go-on-click",
+			offset: '0',  <span class="comment">//must be '0' for preroll video</span>
+			skip: 5, <span class="comment">//optionally</span>
+			id: '1' <span class="comment">//useful for tracking roll video</span>
+		}, {
+			src: "//opencdn.b-cdn.net/video/midroll1.mp4",
+			type: "video/mp4",
+			href: "https://url-to-go-on-click",
+			offset: '10', <span class="comment">//midroll starts at 00:10</span>
+			skip: 5, <span class="comment">//optionally</span>
+			id: '2'
+		}
+			src: "//opencdn.b-cdn.net/video/midroll2.mp4",
+			type: "video/mp4",
+			href: "https://url-to-go-on-click",
+			offset: '50%', <span class="comment">//midroll starts at half of video</span>
+			skip: 5, <span class="comment">//optionally</span>
+			id: '3'
+		}
+			src: "//opencdn.b-cdn.net/video/postroll.mp4",
+			type: "video/mp4",
+			href: "https://url-to-go-on-click",
+			offset: '100%', <span class="comment">//must be '100%' for postroll video</span>
+			skip: 5, <span class="comment">//optionally</span>
+			id: '4'
+		}
+	]);
+&lt;/script&gt;
+</pre>
+<br />
+Preroll video must have option "offset: 0", psotroll video must have option "offset: 100%". <br />
+You can't use postroll video for live streams. You can't use offset percentage value for live stream.<br />
+To play midroll video one after another just set same "offset" value.
+<br /><br />
+
+<h3>Tracking video ad by ad ID</h3>
+
+<pre>
+&lt;script&gt;
+   player.on('vroll', function(event, data) {
+	  var ad_id = data.id;
+	  var action = data.action;
+   }
+&lt;/script&gt;
+</pre>
+Actions tracked by the plugin are "start", "paused", "resumed" "skipped", "completed", "error", "clicked", 
+
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevodevl Software</a>. All rights reserved.
+</div>
+
+</body>
+</html>

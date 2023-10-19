@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs/Nuevo - Premium Skins</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="../videojs/skins/treso/videojs.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Premium Nuevo skin usage</h1>
+
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload="auto" playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_240.mp4" res="240" label="240p" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_360.mp4" res="360" label="360p" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_480.mp4" default res="480" label="480p" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" res="720" label="720p" type="video/mp4">
+			</video>
+		</div>
+	</div>
+
+
+
+	<script>
+	var player = videojs('player_1');
+	player.nuevo({ 
+		
+	});
+	</script>
+
+<div class="explain">
+Using premium Nuevo skin is quite easy. You only need to load css stylesheet file from one of premium skins directory instead of default "/nuevo/" skin directory.
+</div>
+
+<h2>Code Setup to use "treso" skin</h2>
+<pre>
+<span class="comment">&lt;!--Inside Body tag--&gt;</span>
+&lt;link href="../videojs/skins/<span class="mark">treso</span>/videojs.min.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script src="../videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/nuevo.min.js"&gt;&lt;/script&gt;
+</pre>
+
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevodevel Software</a>. All rights reserved.
+</div>
+
+</body>
+</html>

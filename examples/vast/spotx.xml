@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<VAST version="2.0">
+	<Ad id="bf9aee2713be152529c835923d922451-128a6.44d74.46b3" >
+	<InLine>
+	<AdSystem version="1.0">SpotXchange</AdSystem>
+	<AdTitle><![CDATA[1 Main Testing 85394 Hosted Creative]]></AdTitle>
+	<Description><![CDATA[]]></Description>
+	<Impression><![CDATA[vast/tracking.html?event=impression]]></Impression>
+	<Error><![CDATA[vast/tracking.html?event=error]]></Error>
+	<Creatives>
+	<Creative sequence="1">
+	<Linear skipoffset="00:00:05">
+	<Duration>00:00:15</Duration>
+	<TrackingEvents>
+	<Tracking event="complete"><![CDATA[vast/tracking.html?event=complete]]></Tracking>
+	<Tracking event="firstQuartile"><![CDATA[vast/tracking.html?event=firstQuartile]]></Tracking>
+	<Tracking event="midpoint"><![CDATA[vast/tracking.html?event?midpoint]]></Tracking>
+	<Tracking event="thirdQuartile"><![CDATA[vast/tracking.html?event=thirdQuartile]]></Tracking>
+	<Tracking event="pause">vast/tracking.html?event=pause</Tracking>
+	<Tracking event="resume">vast/tracking.html?event=resume</Tracking>
+	<Tracking event="skip">vast/tracking.html?event=skip</Tracking>
+	<Tracking event="clickthrough">vast/tracking.html?event=clickthrough</Tracking>
+	</TrackingEvents>
+	<MediaFiles>
+	<MediaFile delivery="progressive" type="video/mp4" bitrate="2254" width="950" height="540"><![CDATA[https://opencdn.b-cdn.net/video/spotx.mp4]]></MediaFile>
+	</MediaFiles>
+	</Linear>
+	</Creative>
+	</Creatives>
+	<Extensions>
+	<Extension type="LR-Pricing">
+	<Price model="CPM" currency="USD" source="spotxchange"><![CDATA[0.05]]></Price>
+	</Extension>
+	<Extension type="SpotX-Count"><total_available><![CDATA[1]]></total_available>
+	</Extension>
+	<Extension type="Spotx-Regs"><GDPR>1</GDPR></Extension>
+	<Extension type="Spotx-User"><consent>2</consent></Extension>
+	</Extensions>
+	</InLine>
+	</Ad>
+</VAST>

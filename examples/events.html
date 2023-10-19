@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Video events plugin</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="../videojs/skins/treso/videojs.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Events &amp; Analytics plugin</h1>
+
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+	<script src="../videojs/plugins/videojs.events.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload="auto" playsinline poster="images/coffee.jpg">
+				<source src="//opencdn.b-cdn.net/video/hls/coffee/playlist.m3u8" type="application/x-mpegURL">
+			</video>
+		</div>
+	</div>
+
+
+	<script>
+	var player = videojs('player_1');
+	player.nuevo({title: 'Events Example Video', video_id:'v111'});
+	player.events();
+	player.on('track', (e, data) => {
+				switch(data.event) {
+					case 'buffered': console.log('Buffered ('+data.bufferTime+')');break;
+					case 'loaded': 
+						console.log('Video Id: '+data.videoId);
+						console.log('Video Title: '+data.videoTitle);
+						console.log('Video loaded in '+data.initialLoadTime+'s');break;
+					case 'firstPlay': console.log('Fisrt Play initialized'); break;
+					case 'pause': console.log('Pause ('+data.pauseCount+')'); break;
+					case 'resume': console.log('Resume ('+data.resumeCount+')'); break;
+					case '10%': console.log('Progress 10%');break;
+					case '25%': console.log('Progress 25%');break;
+					case '50%': console.log('Progress 50%');break;
+					case '75%': console.log('Progress 75%');break;
+					case '90%': console.log('Progress 90%');break;
+					case 'seek': console.log('Seeked to: '+data.seekTo); break;
+					case 'ended': console.log('Video completed'); break;
+					case 'resolutionChange': console.log('Resolution change: '+data.resolution+'p');break;
+					case 'rateChange': console.log('Playback reate: '+data.rate);break;
+					case 'mute': console.log('Muted');break;
+					case 'unmute': console.log('Unmuted');break;
+					case 'enterFullscreen': console.log('Fullscreen entered');break;
+					case 'exitFullscreen': console.log('Fullscreen left');break;
+					case 'summary': console.log('Watched duration:'+data.watchedDuration);
+					break;
+					case 'default': break;
+				}
+			});	
+
+	</script>
+
+<div class="explain">
+The events plugin allows to track a bunch of player events and record the most important events in Google Analycis or Matomo (formerly Piwik) platforms.
+</div>
+
+<h2>Initialize player and plugins</h2>
+This is essential to set unique title and unique id for each video that events you want to track. You can do it in several ways, e.g. as Nuevo plugin options.
+<pre>
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ title:"Events Example Video", video_id:"v111" });
+	player.events(); 
+&lt;/script&gt;
+</pre>
+
+To enable one of available analytics methods just enable appropriate option. Events plugin automatically detects analytics method used on website.
+
+<pre>
+player.events({ analytics:true }); 
+</pre>
+Tracking events javascript function is simple:
+<pre>
+&lt;script&gt;
+player.on('track', (e, data) => {
+  var event_name = data.eventType;
+  var video_id = data.playerId;
+  var video_title = data.playerTitle;
+});
+&lt;/script&gt;
+</pre>
+You may check browser's Console to see how example video is tracked. In the source code you will find a function that allows to output events in Console.
+<br /><br />
+Plugin's description and full list of events available to track you can find on <a href="https://www.nuevodevel.com/nuevo/showcase/playerevents">Nuevodevel demo</a> website page.
+
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevodevel Software</a>. All rights reserved.
+</div>
+
+</body>
+</html>

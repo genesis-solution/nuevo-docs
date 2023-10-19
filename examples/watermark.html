@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<title>Videojs/Nuevo - Watermarks</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Watermark</h1>
+	<link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" />
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+			</video>
+		</div>
+	</div>
+
+
+	<script>
+	var player = videojs('player_1');
+	player.nuevo({ 
+		logotitle:'Nuevo plugin for Videojs',
+		logo: 'images/logo.png',
+		logoposition:'RT',
+		logourl:'https://www.nuevodevel.com/nuevo/'
+	});
+	</script>
+
+<h2>Code Setup Source (Watermark logo)</h2>
+<pre>
+<span class="comment">&lt;!--Loading player skin, videojs and nuevo plugin inside &lt;body&gt; tag --&gt;</span>
+&lt;link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script src="../videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/nuevo.min.js"&gt;&lt;/script&gt;
+
+<span class="comment">&lt;!--Video tag setup--&gt;</span>
+&lt;video id="<span class="mark">player_one</span>" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm"&gt;
+&lt;/video&gt;
+
+<span class="comment">&lt;!--Initialize videojs and Nuevo plugin--&gt;</span>
+&lt;script&gt;
+var player = videojs('player_1');
+player.nuevoPlugin({ 
+	logotitle: "Nuevo plugin for Videojs",
+	logo: "images/logo.png",
+	logoposition: "RT",
+	logourl: "https://www.nuevodevel.com/nuevo/"
+});
+&lt;/script&gt;
+</pre>
+
+<br />
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_2" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+			</video>
+		</div>
+	</div>
+	
+	<script>
+	var player = videojs('player_2');
+	player.nuevo({ 
+		logotitle:'Nuevo plugin for Videojs',
+		logourl:'https://www.nuevodevel.com/nuevo/',
+		logocontrolbar: 'images/logo2.png'
+	});
+	</script>
+
+<h2>Player Setup Source (Controlbar logo)</h2>
+<pre>
+<span class="comment">&lt;!--Initialize videojs and Nuevo plugin--&gt;</span>
+&lt;script&gt;
+var player = videojs('player_one');
+player.nuevoPlugin({ 
+	logotitle: "Nuevo plugin for Videojs",
+	logourl: "https://www.nuevodevel.com/nuevo/",
+	logocontrolbar: "images/logo2.png"
+});
+&lt;/script&gt;
+</pre>
+
+
+<br />
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_3" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+			</video>
+		</div>
+	</div>
+	
+	<script>
+	var player = videojs('player_3');
+	player.nuevo({ 
+		logotitle: "Nuevo plugin for Videojs",
+		logo: "images/logo.png",
+		logoposition: "RT",
+		logourl: "https://www.nuevodevel.com/nuevo/",
+		logocontrolbar: "images/logo2.png"
+	});
+	</script>
+
+<h2>Player Setup Source (Logo Both)</h2>
+<pre>
+<span class="comment">&lt;!--Initialize videojs and Nuevo plugin--&gt;</span>
+&lt;script&gt;
+var player = videojs('player_3');
+player.nuevoPlugin({ 
+	logotitle: "Nuevo plugin for Videojs",
+	logo: "images/logo.png",
+	logoposition: "RT",
+	logotitle: "Nuevo plugin for Videojs",
+	logourl: "https://www.nuevodevel.com/nuevo/",
+	logocontrolbar: "images/logo2.png"
+});
+&lt;/script&gt;
+</pre>
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<title>Videojs/Nuevo - Audio playback</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Audio Plyaback</h1>
+
+	<link href="../videojs/skins/nuevo/videojs.css?vr=3" rel="stylesheet" type="text/css" />
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+	<script src="../videojs/plugins/visualizer.js?ct=7"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<audio id="player_1" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/audio.jpg">
+				<source src="mp3/molly.mp3" type="audio/mp3">
+			</audio>
+		</div>
+	</div>
+
+
+	<script>
+	var player = videojs('player_1');
+	var audio_info = {title:"Molly Song", artist:"Maciej", cover:"images/covers/cover.jpg", album:"Love Songs", year:"2020", genre:"Pop"}
+	player.nuevo({ audioInfo: audio_info });
+	</script>
+
+
+<h2>Code Setup Source</h2>
+Player detup code does not differ from basic setup for video. <br />You only need to provideo valid audio file source and proper audio mime type.
+<pre>
+&lt;audio id="<span class="mark">player_one</span>" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg"&gt;
+	&lt;source src="mp3/molly.mp3" type="audio/mp3"&gt;
+&lt;/audio&gt;
+</pre>
+You can use both, &lt;audio&gt; and &lt;video&gt; tag. The difference is especially important on iOS mobile device. &lt;video&gt; tag allows to display subtitles including iOS native fullscreen. &lt;audio&gt; tag is playing pseudo fulscreen on iOS mobile, does not allow to show subtitles.<br /><br />
+You can make use of <span class="mark">audioInfo</span> option to define and display audio track information like track cover image, track title, artist, album name, genre and release date. It's separate of audio background poster image.<br />
+To learn about using audioInfo option check tuotial on <a href="https://www.nuevodevel.com/nuevo/showcase/audio">https://www.nuevodevel.com/nuevo/showcase/audio</a>
+<br /><br />
+Gold plan of Nuevo plugin includes visualizer plugin that you may consider to use and show.
+	<div class="media-parent">
+		<div class="media-child">
+			<audio id="player_2" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/audio.jpg">
+				<source src="mp3/molly.mp3" type="audio/mp3">
+			</audio>
+		</div>
+	</div>
+	<script>
+	var player2 = videojs('player_2');
+	var audio_info = {title:"Molly Song", artist:"Maciej", cover:"images/covers/cover.jpg", album:"Love Songs", year:"2020", genre:"Pop"}
+	player2.nuevo({ audioInfo: audio_info });
+	player2.visualizer();
+	</script>
+<br />
+	Visualizer plugin automatically detects audio media type. You need to load visualizer tiny javascript plugin and initialize it in player setup code.
+<pre>
+&lt;script src="../videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/nuevo.min.js"&gt;&lt;/script&gt;
+<span class="mark">&lt;script src="../videojs/plugins/visualizer.js"&gt;&lt;/script&gt;</span>
+
+&lt;script&gt;
+	var player = videojs('player_2)';
+	player.nuevo({ option_name: 'option_value', option_name: 'option_value' }); 
+	<span class="mark">player.visualizer();</span>
+&lt;/script&gt;
+</pre>
+Visualizer plugin options are described on <a href="https://www.nuevodevel.com/nuevo/showcase/audio-visualizer">https://www.nuevodevel.com/nuevo/showcase/audio-visualizer</a>
+
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>

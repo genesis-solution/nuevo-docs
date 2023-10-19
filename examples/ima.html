@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs/Nuevo - Google Ima Ads</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Google Ima Ads plugin</h1>
+	<link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" />
+	<link href="../videojs/skins/nuevo/ima.min.css" rel="stylesheet" type="text/css" />
+	<script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+	<script type="text/javascript" src="../videojs/video.min.js"></script>
+	<script type="text/javascript" src="../videojs/plugins/videojs.ima.min.js"></script>
+	<script type="text/javascript" src="../videojs/plugins/videojs-contrib-ads.min.js"></script>
+	<script type="text/javascript" src="../videojs/nuevo.min.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+			</video>
+		</div>
+	</div>
+
+
+
+	<script>
+	var player = videojs('player_1');
+	player.nuevo({ 
+		//option1: 'value',
+		//option2: 'value'
+	});
+	var options = {
+		id: 'player_1',
+		adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=xml_vmap1&unviewed_position_start=1&cust_params=sample_ar%3Dpremidpostpod%26deployment%3Dgmf-js&cmsid=496&vid=short_onecue&correlator='
+	};
+	google.ima.settings.setDisableCustomPlaybackForIOS10Plus(true); 
+	player.ima(options);
+
+	var contentPlayer =  document.getElementById('player_1_html5_api');
+	if ((navigator.userAgent.match(/iPad/i) ||
+		  navigator.userAgent.match(/Android/i)) &&
+		contentPlayer.hasAttribute('controls')) {
+	  contentPlayer.removeAttribute('controls');
+	}
+	var startEvent = 'click';
+	if (navigator.userAgent.match(/iPhone/i) ||
+		navigator.userAgent.match(/iPad/i) ||
+		navigator.userAgent.match(/Android/i)) {
+	  startEvent = 'touchend';
+	}
+	player.one(startEvent, function() {
+		player.ima.initializeAdDisplayContainer();
+	});    
+
+	</script>
+
+<h2>Code Source</h2>
+<pre>
+<span class="comment">&lt;!--Load Viddeojs and Ima CSS into website Body tag--&gt;</span>
+&lt;link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" /&gt;
+&lt;link href="../videojs/skins/nuevo/ima.min.css" rel="stylesheet" type="text/css" /&gt;
+
+<span class="comment">&lt;!--Load Ima SDK Loader, videojs and necessary plugins--&gt;</span>
+&lt;script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/plugins/videojs.ima.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/plugins/videojs-contrib-ads.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/nuevo.min.js"&gt;&lt;/script&gt;
+
+<span class="comment">&lt;!--Video tag setup--&gt;</span>
+&lt;video id="<span class="mark">player_1</span>" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm"&gt;
+&lt;/video&gt;
+
+<span class="comment">&lt;!--Initialize player and Nuevo pluging--&gt;</span>
+&lt;script&gt;
+	var player = videojs('<span class="mark">player_1</span>');
+	player.nuevo({ 
+		//option1: 'value',
+		//option2: 'value'
+	});
+
+	<span class="comment">&lt;!--Initialize Ima Ads--&gt;</span>
+	var options = {
+		id: '<span class="mark">player_1</span>',
+		adTagUrl: 'YOUR_IMA_AD_TAG'
+	};
+
+	<span class="comment">&lt;!--Enable iOS playback--&gt;</span>
+	google.ima.settings.setDisableCustomPlaybackForIOS10Plus(true); 
+	player.ima(options);
+
+	<span class="comment">&lt;!--Part required for proper Ima playback on mobile device--&gt;</span>
+	var contentPlayer =  document.getElementById('<span class="mark">player_1</span>_html5_api');
+	if ((navigator.userAgent.match(/iPad/i) ||
+		  navigator.userAgent.match(/Android/i)) &&
+		contentPlayer.hasAttribute('controls')) {
+	  contentPlayer.removeAttribute('controls');
+	}
+	var startEvent = 'click';
+	if (navigator.userAgent.match(/iPhone/i) ||
+		navigator.userAgent.match(/iPad/i) ||
+		navigator.userAgent.match(/Android/i)) {
+	  startEvent = 'touchend';
+	}
+
+	player.one(startEvent, function() {
+		player.ima.initializeAdDisplayContainer();
+	});  
+&lt;/script&gt;
+</pre>
+This is optimal code to load and play Adsense video Ima ads, including mobile devices.<br />
+Pay attention to player unique id. It appears 4 times: as video id, to initialize videojs, as Ima options id and as a part if IMA contentPlayer id. Of course it must be same across entire player code setup. In our code example unique id is easy to find, marked in <span class="mark">blue</span> color.
+
+<br /><br />
+
+It is required to setup proper CORS (Cross-Origin Resource Sharing) configuration on server  to enable cross-site HTTP requests.<br />
+Implementing the request headers to set up CORS correctly depends on the language and framework of the backend.<br />
+More information about enabling CORS you can find on <a target="_blank" href="https://enable-cors.org/">https://enable-cors.org</a>
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>

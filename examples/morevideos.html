@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>More Videos plugin</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="../videojs/skins/treso/videojs.min.css" rel="stylesheet" type="text/css" />
+<link href="../videojs/skins/treso/morevideo.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>More Videos Plugin</h1>
+
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+	<script src="../videojs/plugins/morevideos.js?v=1"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload="auto" crossorigin="anonymous" playsinline poster="images/coffee.jpg">
+				<source src="//opencdn.b-cdn.net/video/hls/coffee/playlist.m3u8" type="application/x-mpegURL">
+			</video>
+		</div>
+	</div>
+
+
+
+	<script>
+		var more_videos = [
+		{thumb: 'images/thumbs/surf.jpg',url: '//www.nuevodevel.com/nuevo/demo/surf',title: 'Surfing is beatiful', duration:'04:12'},
+		{thumb: 'images/thumbs/big_buck.jpg',url: '//www.nuevodevel.com/nuevo/demo/big_buck',title: 'Big Buck Bunny', duration: '02:17'},
+		{thumb: 'images/thumbs/animals.jpg',url: '//www.nuevodevel.com/nuevo/demo/animals',title: 'Animals are amazing!', duration: '03:03'},
+		{thumb: 'images/thumbs/freeride.jpg',url: '//www.nuevodevel.com/nuevo/demo/freeride',title: 'Free Ride', duration: '05:50'},
+		{thumb: 'images/thumbs/australia.jpg',url: '//www.nuevodevel.com/nuevo/demo/australia',title: 'Welcome to Australia', duration: '02:29'}, 
+		{thumb: 'images/thumbs/base_jump.jpg',url: '//www.nuevodevel.com/nuevo/demo/base_jump',title: 'Incredible BASE Jump', duration: '03:20'},
+		{thumb: 'images/thumbs/alaska.jpg',url: '//www.nuevodevel.com/nuevo/demo/alaska',title: 'The beauty of Alasca', duration: '02:54'},
+		{thumb: 'images/thumbs/cymaticjazz.jpg',url: '//www.nuevodevel.com/nuevo/demo/cymaticjazz',title: 'LG Cymatic Jazz Demo', duration: '02:35'},
+		{thumb: 'images/thumbs/serenity.jpg',url: '//www.nuevodevel.com/nuevo/demo/serenity',title: 'Serenity Movie Trailer', duration: '02:13'},
+		{thumb: 'images/thumbs/newyorkcity.jpg',url: '//www.nuevodevel.com/nuevo/demo/newyorkcity',title: 'New York City 4K', duration: '01:07'},
+		{thumb: 'images/thumbs/thailand.jpg',url: '//www.nuevodevel.com/nuevo/demo/thailand',title: 'Thailand Retrospective', duration: '02:06'},
+		{thumb: 'images/thumbs/titanic.jpg',url: '//www.nuevodevel.com/nuevo/demo/titanic',title: 'Titanic 2 - Jack`s Back 2019 Trailer', duration: '04:09'}
+		];
+	var player = videojs('player_1');
+	player.nuevo();
+	player.morevideo(more_videos);
+	</script>
+
+<div class="explain">
+The plugin allows to overlay a gallery of suggested videos at the bottom of the player, above the control bar. It's almost same like a video galleryy on YouTube embedded player.
+</div>
+
+Before you initialize morevideos plugin you must define an array of suggested videos. You can do it in exactly same way as for <a href="./related.html"> related videos.</a>
+
+<h2>Initialize player and plugins</h2>
+<pre>
+<!--Initialize player and plugins-->
+&lt;script&gt;
+	var player = videojs('player_1');
+	player.nuevo({ 
+		option1: value,
+		option2: value
+	});
+	var more_videos = [....];
+	player.morevideo(more_videos); 
+&lt;/script&gt;
+</pre>
+
+You can use different arrays or the same array of videos for related dialog and more videos gallery. You can disable related videos menu item and use only more videos gallery.
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevodevel Software</a>. All rights reserved.
+</div>
+
+</body>
+</html>

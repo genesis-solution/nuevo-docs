@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Videojs/Nuevo - Related videos</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="header">
+	<div class="menu">
+		<a href="https://www.nuevodevel.com/nuevo/"><img src="images/nuevodevel.png"></a>
+		<div class="browse">&larr; <a href="index.html">Back to examples</a></div>
+	</div>
+</div>
+
+<div class="container">
+	<h1>Related videos in Settings menu</h1>
+	<link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" />
+	<script src="../videojs/video.min.js"></script>
+	<script src="../videojs/nuevo.min.js"></script>
+
+	<div class="media-parent">
+		<div class="media-child">
+			<video id="player_1" class="video-js vjs-fluid" controls preload playsinline webkit-playsinline poster="images/poster.jpg">
+				<source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4">
+				<source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm">
+			</video>
+		</div>
+	</div>
+
+
+
+
+	<script>
+		var related_videos = [
+		{thumb: 'images/thumbs/surf.jpg',url: '//www.nuevodevel.com/nuevo/demo/surf',title: 'Surfing is beatiful', duration:'04:12'},
+		{thumb: 'images/thumbs/big_buck.jpg',url: '//www.nuevodevel.com/nuevo/demo/big_buck',title: 'Big Buck Bunny', duration: '02:17'},
+		{thumb: 'images/thumbs/animals.jpg',url: '//www.nuevodevel.com/nuevo/demo/animals',title: 'Animals are amazing!', duration: '03:03'},
+		{thumb: 'images/thumbs/freeride.jpg',url: '//www.nuevodevel.com/nuevo/demo/freeride',title: 'Free Ride', duration: '05:50'},
+		{thumb: 'images/thumbs/australia.jpg',url: '//www.nuevodevel.com/nuevo/demo/australia',title: 'Welcome to Australia', duration: '02:29'}, 
+		{thumb: 'images/thumbs/base_jump.jpg',url: '//www.nuevodevel.com/nuevo/demo/base_jump',title: 'Incredible BASE Jump', duration: '03:20'},
+		{thumb: 'images/thumbs/alaska.jpg',url: '//www.nuevodevel.com/nuevo/demo/alaska',title: 'The beauty of Alasca', duration: '02:54'},
+		{thumb: 'images/thumbs/cymaticjazz.jpg',url: '//www.nuevodevel.com/nuevo/demo/cymaticjazz',title: 'LG Cymatic Jazz Demo', duration: '02:35'},
+		{thumb: 'images/thumbs/serenity.jpg',url: '//www.nuevodevel.com/nuevo/demo/serenity',title: 'Serenity Movie Trailer', duration: '02:13'},
+		{thumb: 'images/thumbs/newyorkcity.jpg',url: '//www.nuevodevel.com/nuevo/demo/newyorkcity',title: 'New York City 4K', duration: '01:07'},
+		{thumb: 'images/thumbs/thailand.jpg',url: '//www.nuevodevel.com/nuevo/demo/thailand',title: 'Thailand Retrospective', duration: '02:06'},
+		{thumb: 'images/thumbs/titanic.jpg',url: '//www.nuevodevel.com/nuevo/demo/titanic',title: 'Titanic 2 - Jack`s Back 2019 Trailer', duration: '04:09'}
+		];
+		var player = videojs('player_1');
+		player.nuevo({ 
+				related: related_videos
+		});
+	</script>
+
+
+<h2>Code Source</h2>
+<pre>
+<span class="comment">&lt;!--Load player skin, videojs and nuevo plugin inside &ltbody&gt; tag--&gt;</span>
+&lt;link href="../videojs/skins/nuevo/videojs.min.css" rel="stylesheet" type="text/css" /&gt;
+&lt;script src="../videojs/video.min.js"&gt;&lt;/script&gt;
+&lt;script src="../videojs/nuevo.min.js"&gt;&lt;/script&gt;
+
+<span class="comment">&lt;!--Video tag setup--&gt;</span>
+&lt;video id="<span class="mark">player_1</span>" class="video-js vjs-fluid" controls preload playsinline poster="images/poster.jpg"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/demo_720.mp4" type="video/mp4"&gt;
+	&lt;source src="//opencdn.b-cdn.net/video/demo_720.webm" type="video/webm"&gt;
+
+<span class="comment">&lt;!--Related video items setup--&gt;</span>
+&lt;script&gt;
+	var <span class="mark">related_videos</span> = [
+	{thumb: 'images/thumbs/surf.jpg',url: '/videojs/demo/surf',title: 'Surfing is beatiful', duration:'04:12'},
+	{thumb: 'images/thumbs/big_buck.jpg',url: '/videojs/demo/big_buck',title: 'Big Buck Bunny', duration: '02:17'},
+	{thumb: 'images/thumbs/animals.jpg',url: '/videojs/demo/animals',title: 'Amazing animals!', duration: '03:03'},
+	{thumb: 'images/thumbs/freeride.jpg',url: '/videojs/demo/freeride',title: 'Free Ride', duration: '05:50'},
+	{thumb: 'images/thumbs/australia.jpg',url: '/videojs/demo/australia',title: 'Australia', duration: '02:29'}, 
+	{thumb: 'images/thumbs/base_jumpb.jpg',url: '/videojs/demo/base_jump',title: 'BASE Jump', duration: '03:20'},
+	{thumb: 'images/thumbs/alaska.jpg',url: '/videojs/demo/alaska',title: 'Alasca beauty', duration: '02:54'},
+	{thumb: 'images/thumbs/cymaticjazz.jpg',url: '/videojs/demo/cymaticjazz',title: 'Cymatic Jazz', duration: '02:35'},
+	{thumb: 'images/thumbs/serenity.jpg',url: '/videojs/demo/serenity',title: 'Serenity Trailer', duration: '02:13'},
+	{thumb: 'images/thumbs/newyorkcity.jpg',url: '/videojs/demo/newyorkcity',title: 'New York', duration: '01:07'},
+	{thumb: 'images/thumbs/thailand.jpg',url: '/videojs/demo/thailand',title: 'Thailand', duration: '02:06'},
+	{thumb: 'images/thumbs/titanic.jpg',url: '/videojs/demo/titanic',title: 'Titanic 2', duration: '04:09'}
+	];
+
+	<span class="comment">&lt;!--Initialize the player and plugin--&gt;</span>
+	var player = videojs('player_1');
+	player.nuevo({ 
+		<span class="mark">related: related_videos</span>
+	});
+&lt;/script&gt;
+</pre>
+Please remind that this code example use relative paths for related URL links.<br />
+In real scenario you must use absolute URLs to valid website pages.
+
+</div>
+<div class="footer">
+&copy; 2008 - 2022, <a href="https://www.nuevodevel.com">Nuevo Development</a>. All rights reserved.
+</div>
+
+</body>
+</html>
